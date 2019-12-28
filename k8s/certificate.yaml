@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: zhilong-page-tls
+spec:
+  secretName: zhilong-page
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: zhilong.page
+  dnsNames:
+    - zhilong.page
+    - www.zhilong.page
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - zhilong.page
+          - www.zhilong.page
